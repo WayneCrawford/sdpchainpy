@@ -1,3 +1,25 @@
+Metadata-Version: 2.1
+Name: sdpchainpy
+Version: 1.0.1
+Summary: SDPCHAIN provenance system
+Home-page: https://github.com/WayneCrawford/sdpchainpy
+Author: Wayne Crawford
+Author-email: crawford@ipgp.fr
+Keywords: provencance,data,metadata
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Physics
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
 SDPCHAIN
 ===========
 
@@ -38,44 +60,6 @@ SDPCHAIN rules (process-steps file, -i, -o, -d)
 `sdpstep`: run a standard command-line program 
 
 `sdpcat`: concatenate binary files
-
-process-steps.json
-------------------
-
-Contains information about each processing step, represented as an item in a
-top-level list.  Each processing step item has ``application`` and ``execution``
-fields specifiying, respectively, the application used and how it was executed.
-
-Below is an example of a processing step file with only the required fields
-and one step.
-
-```json
-{
-  "steps": [
-    {
-      "application": {
-        "description": "Concatenate files",
-        "name": "sdpcat",
-        "version": "0.73.post2"
-      },
-      "execution": {
-        "date": "2021-03-31T12:45:13",
-        "command_line": "sdpcat --ifs test.header.lch test.dat --of test.out",
-        "parameters": {
-          "directory_paths": {"base": ".", "input": ".", "output": "."},
-          "input_files": ["test.header.lch", "test.dat"],
-          "output_file": "test.out"
-        },
-        "messages": [],
-        "exit_status": 0,
-      }
-    }
-  ]
-}
-```
-
-
-
 
 ToDo
 ----

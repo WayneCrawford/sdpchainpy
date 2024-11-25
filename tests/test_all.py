@@ -18,12 +18,12 @@ import subprocess
 from datetime import datetime
 from argparse import Namespace
 
-import lcheapo.sdpchain as sdpchain
+import sdpchainpy
 
 
 class TestMethods(unittest.TestCase):
     """
-    Test suite for sdpchain operations.
+    Test suite for sdpchainpy operations.
     """
     def setUp(self):
         self.path = Path(inspect.getfile(
@@ -78,7 +78,7 @@ class TestMethods(unittest.TestCase):
         """
         Test ProcessSteps class
         """
-        pc = sdpchain.ProcessStep(
+        pc = sdpchainpy.ProcessStep(
             'my_app',
             'my_app -a hehe -b hoho',
             datetime(2019, 6, 5, 12, 52, 56),
@@ -98,7 +98,7 @@ class TestMethods(unittest.TestCase):
         """
         Verify that an empty process_steps file doesn't kill the rest
         """
-        pc = sdpchain.ProcessStep(
+        pc = sdpchainpy.ProcessStep(
             'my_app',
             'my_app -a hehe -b hoho',
             datetime(2019, 6, 5, 12, 52, 56),
@@ -117,7 +117,7 @@ class TestMethods(unittest.TestCase):
 
     def test_setup_paths(self):
         """
-        Test setup of sdpchain paths
+        Test setup of sdpchainpy paths
         """
         test_path = Path('hahahahahahahaha')
         if test_path.exists():
@@ -131,7 +131,7 @@ class TestMethods(unittest.TestCase):
         ns.in_dir = 'in_dir'
         ns.out_dir = 'out_dir'
         ns.input_files = ''
-        new_in, new_out = sdpchain.ProcessStep.setup_paths(ns, verbose=False)
+        new_in, new_out = sdpchainpy.ProcessStep.setup_paths(ns, verbose=False)
         self.assertEqual(new_in, str(test_path / 'in_dir'))
         self.assertEqual(new_out, str(test_path / 'out_dir'))
         self.assertTrue(out_path.is_dir())
@@ -194,7 +194,7 @@ class TestMethods(unittest.TestCase):
         """
         Make sure sdpstep step fails smart if tool does not exist
         """
-        self.assertFalse(sdpchain.is_tool("qwiovnksahweuhsdhuskjsda"))
+        self.assertFalse(sdpchainpy.is_tool("qwiovnksahweuhsdhuskjsda"))
 
 
     # def test_sdpstep_fail_redirection(self):
